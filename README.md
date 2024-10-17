@@ -9,13 +9,32 @@ This project aims to detect roundabouts from GeoSpatial Probe data using Four di
 We applied a data-driven method to detect roundabouts using logistic regression and circular region detection:
 
 - **Data Cleaning**: We excluded impossible speeds that occur during rotation, ensuring the data is reliable.
+- **Mobility Tracing**: After removing noise from the data, we were able to trace mobility perfectly. This improvement in data quality made it significantly easier to detect whether a point was inside a circular region or not.
+
+<img src="Readme_Images/3.png" alt="Mobility Tracing" style="width: 500px; height: auto;">
+
 - **Logistic Regression**: This model was used to predict whether a data point falls within a roundabout area.
 - **Circle Detection**:
   - Defined circular areas using their centers (latitude and longitude) and corresponding radii.
   - For each point, the distance to the center of each predefined circle was calculated. If the point was within the radius, it was considered inside the roundabout.
+  
+  <img src="Readme_Images/1.png" alt="Circle Detection" style="width: 500px; height: auto;">
+  
 - **Headings Difference Calculation**:
   - The difference in headings between consecutive points was calculated.
   - These differences helped in identifying sharp turns, a key feature of circular movements, such as those seen in roundabouts.
+  
+  <img src="Readme_Images/2.png" alt="Circle Detection" style="width: 500px; height: auto;">
+
+#### Tabular Approach Results
+
+  <img src="Readme_Images/5.png" alt="Circle Detection" style="width: 1000px; height: auto;">
+
+
+  <img src="Readme_Images/4.png" alt="Circle Detection" style="width: 500px; height: auto;">
+
+
+
 
 #### Tabular Approach Improvements (that can be done)
 
@@ -37,13 +56,22 @@ We applied a data-driven method to detect roundabouts using logistic regression 
 - Utilized Snazzy Maps and Google Maps styling to capture roundabouts.
 - Applied specific color stylings to resemble heatmap data from probe sources.
 
+
+
 #### Image Augmentation
 - Used OpenCV for transformations, including rotation and flipping
 - Randomly placed roundabouts at different sizes and positions on blank canvases
 
+
+  <img src="Readme_Images/6.png" alt="Circle Detection" style="width: 200px; height: auto;">
+
+
+
 #### Data Preparation
 - Created bounding boxes around roundabouts in the augmented images
 - Prepared data for training the model on roundabout detection and classification
+
+
 - **Model Selection**: Chose YOLOv8 Nano for its lightweight architecture and speed.
 
 #### Training
@@ -54,6 +82,12 @@ We applied a data-driven method to detect roundabouts using logistic regression 
 #### Prediction Examples
 - Displaying model predictions on a subset of the dataset in the next slide
 - Illustrates the model's ability to detect and classify roundabouts accurately
+
+  <img src="Readme_Images/7.png" alt="Circle Detection" style="width: 200px; height: auto;">
+
+  <img src="Readme_Images/8.png" alt="Circle Detection" style="width: 200px; height: auto;">
+
+    <img src="Readme_Images/9.png" alt="Circle Detection" style="width: 200px; height: auto;">
 
 #### Key Results
 - Fast inference suitable for real-time applications
@@ -89,6 +123,14 @@ We applied a data-driven method to detect roundabouts using logistic regression 
    - Sort detected contours based on circularity scores
    - Return contours representing circles
 
+  <img src="Readme_Images/10.png" alt="Circle Detection" style="width: 500px; height: auto;">
+
+ <img src="Readme_Images/11.png" alt="Circle Detection" style="width: 500px; height: auto;">
+
 ### 4. Pattern Recognition
 
 Through simulation using generated data, we identified a pattern in the change of heading direction while approaching roundabouts. We observed similar patterns in the probe data and noticed that vehicles entering roundabouts typically do not exceed 120 km/h. After cleaning the data, we began to recognize consistent patterns in roundabout approaches.
+
+ <img src="Readme_Images/13.png" alt="Circle Detection" style="width: 500px; height: auto;">
+
+ <img src="Readme_Images/12.png" alt="Circle Detection" style="width: 500px; height: auto;">

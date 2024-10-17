@@ -10,15 +10,20 @@ We applied a data-driven method to detect roundabouts using logistic regression 
 
 - **Data Cleaning**: We excluded impossible speeds that occur during rotation, ensuring the data is reliable.
 - **Mobility Tracing**: After removing noise from the data, we were able to trace mobility perfectly. This improvement in data quality made it significantly easier to detect whether a point was inside a circular region or not.
+
 <img src="Readme_Images/3.png" alt="Mobility Tracing" style="width: 500px; height: auto;">
+
 - **Logistic Regression**: This model was used to predict whether a data point falls within a roundabout area.
 - **Circle Detection**:
   - Defined circular areas using their centers (latitude and longitude) and corresponding radii.
   - For each point, the distance to the center of each predefined circle was calculated. If the point was within the radius, it was considered inside the roundabout.
+  
   <img src="Readme_Images/1.png" alt="Circle Detection" style="width: 500px; height: auto;">
+  
 - **Headings Difference Calculation**:
   - The difference in headings between consecutive points was calculated.
   - These differences helped in identifying sharp turns, a key feature of circular movements, such as those seen in roundabouts.
+  
   <img src="Readme_Images/2.png" alt="Circle Detection" style="width: 500px; height: auto;">
 
 #### Tabular Approach Results
